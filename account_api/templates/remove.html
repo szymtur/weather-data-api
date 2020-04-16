@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <header class="row justify-content-center">
+        <nav class="col-10">
+            {% if request.user.is_authenticated %}
+                <div class="user-info">removing <span>{{ request.user.username }}</span> account</div>
+            {% endif %}
+            <a class="navbar-btn" href="{% url 'dashboard' %}"><i class="fas fa-backward fa-2x"></i></a>
+            <a class="navbar-btn" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt fa-2x"></i></a>
+        </nav>
+    </header>
+
+    <section class="row justify-content-center form-section">
+        <div class="col-sm-9 col-md-7 col-lg-5 justify-content-center align-self-center form-container">
+            <h2>removal confirmation</h2>
+            <form action="" method="post" novalidate>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="text-right">
+                    <input type="submit" value="remove account" class="btn btn-info">
+                </div>
+            </form>
+        </div>
+    </section>
+
+{% endblock %}

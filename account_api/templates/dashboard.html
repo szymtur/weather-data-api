@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <header class="row justify-content-center">
+        <nav class="col-10">
+            {% if request.user.is_authenticated %}
+                <div class="user-info">hello, <span>{{ request.user.username }}</span></div>
+            {% endif %}
+            <a class="navbar-btn" href="{% url 'remove' %}"><i class="fas fa-user-times fa-2x"></i></a>
+            <a class="navbar-btn" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt fa-2x"></i></a>
+        </nav>
+    </header>
+
+    <section class="row justify-content-center dashboard">
+        <div class="col-sm-12 col-md-10 col-lg-8 align-self-center content info-container">
+            {% if user %}
+                <h2>weather api dashboard</h2>
+
+                <div class="row info-row">
+                    <h6>user name:</h6>
+                    <h5>{{ user.username }}</h5>
+                </div>
+                <div class="row info-row">
+                    <h6>email:</h6>
+                    <h5>{{ user.email }}</h5>
+                </div>
+                <div class="row info-row">
+                    <h6>key name:</h6>
+                    <h5>{{ api_key.key_name }}</h5>
+                </div>
+                <div class="row info-row">
+                    <h6>daily limit:</h6>
+                    <h5>{{ api_key.day_limit }} calls</h5>
+                </div>
+                <div class="row info-row">
+                    <h6>remaining limit:</h6>
+                    <h5>{{ remaining_limit }} calls</h5>
+                </div>
+                <div class="row info-row">
+                    <h6>api key:</h6>
+                    <h5>{{ api_key }}</h5>
+                </div>
+                <form class="row info-row" action="" method="post">
+                    <h6>
+                        {% csrf_token %}
+                        <button type="submit" class="regenerate-btn"><i class="fas fa-cog"></i></button>
+                        <span>generate new api key</span>
+                    </h6>
+                </form>
+            {% else %}
+                <h2>no user details</h2>
+            {% endif %}
+        </div>
+    </section>
+{% endblock content %}

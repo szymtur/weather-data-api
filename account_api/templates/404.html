@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <section class="row justify-content-center info-section">
+        <div class="col-sm-12 col-md-10 col-lg-8 text-center align-self-center content container-404">
+            <h3>404</h3>
+            <h2>page not found</h2>
+            <div class="btn-container">
+                <a class="custom-btn" href='{% url 'home' %}'>home</a>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <header class="row justify-content-center">
+        <nav class="col-10">
+            <a class="navbar-btn" href="{% url 'login' %}"><i class="fas fa-sign-in-alt fa-2x"></i></a>
+            <a class="navbar-btn" href="{% url 'home' %}"><i class="fas fa-home fa-2x"></i></a>
+        </nav>
+    </header>
+
+    <section class="row justify-content-center form-section">
+        <div class="col-sm-9 col-md-7 col-lg-5 justify-content-center align-self-center form-container">
+            <h2>sign up</h2>
+            <form action="" method="post" novalidate>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="text-right">
+                    <input type="submit" value="sign up" class="btn btn-info">
+                </div>
+            </form>
+        </div>
+    </section>
+
+{% endblock %}
