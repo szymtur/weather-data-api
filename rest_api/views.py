@@ -11,7 +11,7 @@ from rest_api.serializers import WeatherSerializer
 from rest_api.validators import lang_validator, units_validator, days_validator, ip_validator, coordinates_validator
 
 from rest_api.helpers import (current_weather_data_helper, daily_weather_data_helper, reverse_geocode_data_helper,
-                              forward_geocode_data_helper, api_exception_helper)
+                              forward_geocode_data_helper, api_exception_helper, lower_dict_keys_helper)
 
 from rest_api.providers import (ip_info_handler, current_weather_provider, daily_weather_provider,
                                 reverse_geocode_handler, forward_geocode_handler)
@@ -23,14 +23,16 @@ class CurrentWeatherView(APIView):
 
     def get(self, request):
         try:
-            city = self.request.GET.get('city')
-            latitude = coordinates_validator(self.request.GET.get('lat'))
-            longitude = coordinates_validator(self.request.GET.get('lon'))
-            ip_address = ip_validator(self.request.GET.get('ip'))
-            lang = lang_validator(self.request.GET.get('lang'))
-            units = units_validator(self.request.GET.get('units'))
+            request_GET = lower_dict_keys_helper(self.request.GET)
 
-        except ValidationError as error:
+            city = request_GET.get('city')
+            latitude = coordinates_validator(request_GET.get('lat'))
+            longitude = coordinates_validator(request_GET.get('lon'))
+            ip_address = ip_validator(request_GET.get('ip'))
+            lang = lang_validator(request_GET.get('lang'))
+            units = units_validator(request_GET.get('units'))
+
+        except (ValidationError, Exception) as error:
             logging.error(error.message)
             return api_exception_helper(error.message, error.code)
 
@@ -82,15 +84,17 @@ class DailyWeatherView(APIView):
 
     def get(self, request):
         try:
-            city = self.request.GET.get('city')
-            latitude = coordinates_validator(self.request.GET.get('lat'))
-            longitude = coordinates_validator(self.request.GET.get('lon'))
-            ip_address = ip_validator(self.request.GET.get('ip'))
-            days = days_validator(self.request.GET.get('days'))
-            lang = lang_validator(self.request.GET.get('lang'))
-            units = units_validator(self.request.GET.get('units'))
+            request_GET = lower_dict_keys_helper(self.request.GET)
 
-        except ValidationError as error:
+            city = request_GET.get('city')
+            latitude = coordinates_validator(request_GET.get('lat'))
+            longitude = coordinates_validator(request_GET.get('lon'))
+            ip_address = ip_validator(request_GET.get('ip'))
+            days = days_validator(request_GET.get('days'))
+            lang = lang_validator(request_GET.get('lang'))
+            units = units_validator(request_GET.get('units'))
+
+        except (ValidationError, Exception) as error:
             logging.error(error.message)
             return api_exception_helper(error.message, error.code)
 

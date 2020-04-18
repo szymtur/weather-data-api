@@ -93,3 +93,7 @@ def api_key_generator():
 
 def api_exception_helper(message, status_code):
     return Response(data={'error': message, 'code': str(status_code)}, status=status_code)
+
+
+def lower_dict_keys_helper(dictionary):
+    return dict((key.lower(), val) for key, val in dictionary.items())

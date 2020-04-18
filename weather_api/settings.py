@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 's#qakh@q)wujp28qd!_2*dxtiipiwn=n56a%!^*_uv2db@fetl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -176,10 +176,10 @@ LOGGING = {
 DEFAULT_API_KEY_NAME = 'Master API key'
 DEFAULT_API_KEY_LIMIT = 200
 DEFAULT_DAYS_LIMIT = 12
-DEFAULT_UNITS = 'M'
-DEFAULT_LANG = 'EN'
+DEFAULT_UNITS = 'm'
+DEFAULT_LANG = 'en'
 
-ALLOWED_UNITS = {'M', 'I', 'S'}
+ALLOWED_UNITS = {'m', 'i', 's'}
 ALLOWED_LANG = {'en', 'ar', 'az', 'be', 'bg', 'bs', 'ca', 'cz', 'da', 'de', 'fi', 'fr',
                 'el', 'et', 'hr', 'hu', 'id', 'it', 'is', 'kw', 'lt', 'nb', 'nl', 'pl',
                 'pt', 'ro', 'ru', 'sk', 'sl', 'sr', 'sv', 'tr', 'uk', 'zh', 'zh-tw'}

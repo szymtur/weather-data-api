@@ -6,14 +6,14 @@ from weather_api import settings
 
 
 def lang_validator(lang):
-    if lang not in settings.ALLOWED_LANG:
-        return settings.DEFAULT_LANG
+    if not lang or lang.lower() not in settings.ALLOWED_LANG:
+        return settings.DEFAULT_LANG.lower()
     return lang
 
 
 def units_validator(units):
-    if units not in settings.ALLOWED_UNITS:
-        return settings.DEFAULT_UNITS
+    if not units or units.lower() not in settings.ALLOWED_UNITS:
+        return settings.DEFAULT_UNITS.lower()
     return units
 
 
