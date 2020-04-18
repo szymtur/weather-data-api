@@ -4,5 +4,6 @@ django-crispy-forms==1.9.0
 django-extensions==2.2.9
 psycopg2-binary==2.8.5
 pytz==2019.3
+requests==2.23.0
 ipinfo==3.0.0
 sqlparse==0.3.1
