@@ -26,7 +26,11 @@ def forward_geocode_data_helper(data):
     if not data:
         logging.error(error_message)
         raise HTTPError(error_message)
-    return dict(address=data[0]['address'], lat=data[0]['lat'], lon=data[0]['lon'])
+    try:
+        return dict(address=data[0]['address'], lat=data[0]['lat'], lon=data[0]['lon'])
+    except KeyError as error:
+        logging.error(f'KeyError: {error}')
+        raise Exception(f'KeyError: {error}')
 
 
 def current_weather_data_helper(data):

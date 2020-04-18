@@ -17,10 +17,10 @@ def ip_info_handler(ip_address):
 
 
 # reverse geocode - getting city name from latitude and longitude using http://openstreetmap.org
-def reverse_geocode_handler(**kwargs):
+def reverse_geocode_handler(lat, lon, lang):
     try:
         url = 'https://nominatim.openstreetmap.org/reverse'
-        params = dict(format='json', **kwargs)
+        params = {'format': 'json', 'lat': lat, 'lon': lon, 'accept-language': lang}
         return get(url, params=params).json()
     except (JSONDecodeError, Exception) as error:
         logging.error(error)
@@ -28,10 +28,10 @@ def reverse_geocode_handler(**kwargs):
 
 
 # forward geocode - getting latitude and longitude from city name using http://openstreetmap.org
-def forward_geocode_handler(city_name):
+def forward_geocode_handler(city_name, lang):
     try:
         url = 'https://nominatim.openstreetmap.org'
-        params = dict(format='json', limit=1, addressdetails=1, q=city_name)
+        params = {'format': 'json', 'limit': 1, 'addressdetails':1, 'q': city_name, 'accept-language': lang}
         return get(url, params=params).json()
     except (JSONDecodeError, Exception) as error:
         logging.error(error)

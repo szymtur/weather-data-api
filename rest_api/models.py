@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Configuration(models.Model):
-    code_name = models.SlugField(max_length=64, blank=False, null=False)
+    code_name = models.SlugField(max_length=64, unique=True, blank=False, null=False)
     api_key = models.CharField(max_length=64, blank=False, null=False)
     description = models.CharField(max_length=128, blank=False, null=False)
 

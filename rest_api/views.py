@@ -36,18 +36,18 @@ class CurrentWeatherView(APIView):
 
         try:
             if city:
-                geocode_data = forward_geocode_data_helper(forward_geocode_handler(city))
+                geocode_data = forward_geocode_data_helper(forward_geocode_handler(city_name=city, lang=lang))
                 wb_data = current_weather_provider(lat=geocode_data['lat'], lon=geocode_data['lon'],
                                                    units=units, lang=lang)
 
                 weather_data, location_data = current_weather_data_helper(wb_data)
-                location_data['address'] = geocode_data['address']
+                location_data['address'] = geocode_data.get('address')
 
             elif latitude and longitude:
                 wb_data = current_weather_provider(lat=latitude, lon=longitude, units=units, lang=lang)
                 weather_data, location_data = current_weather_data_helper(wb_data)
 
-                geocode_data = reverse_geocode_handler(lat=latitude, lon=longitude)
+                geocode_data = reverse_geocode_handler(lat=latitude, lon=longitude, lang=lang)
                 location_data['address'] = reverse_geocode_data_helper(geocode_data)
 
             elif ip_address:
@@ -55,7 +55,7 @@ class CurrentWeatherView(APIView):
                 wb_data = current_weather_provider(lat=ip_info.latitude, lon=ip_info.longitude, units=units, lang=lang)
                 weather_data, location_data = current_weather_data_helper(wb_data)
 
-                geocode_data = reverse_geocode_handler(lat=ip_info.latitude, lon=ip_info.longitude)
+                geocode_data = reverse_geocode_handler(lat=ip_info.latitude, lon=ip_info.longitude, lang=lang)
                 location_data['address'] = reverse_geocode_data_helper(geocode_data)
 
             else:
@@ -63,7 +63,7 @@ class CurrentWeatherView(APIView):
                 logging.error(error_message)
                 return api_exception_helper(error_message, status.HTTP_400_BAD_REQUEST)
 
-        except HTTPError as error:
+        except (HTTPError, Exception) as error:
             logging.error(error)
             return api_exception_helper('Internal server error.', status.HTTP_500_INTERNAL_SERVER_ERROR)
 
@@ -96,7 +96,7 @@ class DailyWeatherView(APIView):
 
         try:
             if city:
-                geocode_data = forward_geocode_data_helper(forward_geocode_handler(city))
+                geocode_data = forward_geocode_data_helper(forward_geocode_handler(city_name=city, lang=lang))
                 wb_data = daily_weather_provider(lat=geocode_data['lat'], lon=geocode_data['lon'],
                                                  units=units, lang=lang, days=days)
 
@@ -107,7 +107,7 @@ class DailyWeatherView(APIView):
                 wb_data = daily_weather_provider(lat=latitude, lon=longitude, units=units, lang=lang, days=days)
                 weather_data, location_data = daily_weather_data_helper(wb_data)
 
-                geocode_data = reverse_geocode_handler(lat=latitude, lon=longitude)
+                geocode_data = reverse_geocode_handler(lat=latitude, lon=longitude, lang=lang)
                 location_data['address'] = reverse_geocode_data_helper(geocode_data)
 
             elif ip_address:
@@ -116,7 +116,7 @@ class DailyWeatherView(APIView):
                                                  units=units, lang=lang, days=days)
                 weather_data, location_data = daily_weather_data_helper(wb_data)
 
-                geocode_data = reverse_geocode_handler(lat=ip_info.latitude, lon=ip_info.longitude)
+                geocode_data = reverse_geocode_handler(lat=ip_info.latitude, lon=ip_info.longitude, lang=lang)
                 location_data['address'] = reverse_geocode_data_helper(geocode_data)
 
             else:
@@ -124,7 +124,7 @@ class DailyWeatherView(APIView):
                 logging.error(error_message)
                 return api_exception_helper(error_message, status.HTTP_400_BAD_REQUEST)
 
-        except HTTPError as error:
+        except (HTTPError, Exception) as error:
             logging.error(error)
             return api_exception_helper('Internal server error.', status.HTTP_500_INTERNAL_SERVER_ERROR)
 

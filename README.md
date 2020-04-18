@@ -1,4 +1,5 @@
-# weater-api
+# weather-api
+
 
 1. Create database  
     `createdb weather_api_db -O postgres`
