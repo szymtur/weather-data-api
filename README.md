@@ -1,4 +1,4 @@
-# weather-data-api
+# Weather Data Api
 
 The weather-data-api deliver accurate weather information for any location on Earth in lightweight JSON format.  
 Weather-data-api provides current weather observations and daily weather forecasts for 12 days,  
