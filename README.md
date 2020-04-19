@@ -12,8 +12,8 @@ for any point on the globe along with local timezone.
 
 
 ### Service access:
-  * sign up for an account
-  * use the api key provided in account dashboard
+  * [sign up](http://localhost:8000/account/signup/)  for an account
+  * use the api key provided in account [dashboard](http://localhost:8000/account/dashboard/)
 
 
 ## Current Weather Data
@@ -26,6 +26,7 @@ Every api request will return the nearest, and most recent observation.
 
 
 ### Request parameters
+
 > #### required parameters:
 > `key` - api key  
 >
@@ -35,6 +36,7 @@ Every api request will return the nearest, and most recent observation.
 
 
 ### Search by city
+
 > #### parameters:
 > `city` - city name, postal code, point of interest or address. Can be not only in English.
 >
@@ -47,6 +49,7 @@ Every api request will return the nearest, and most recent observation.
 
 
 ### Search by coordinates
+
 > #### parameters:
 > `lat, lon` - geographical coordinates of the location  
 >
@@ -55,6 +58,7 @@ Every api request will return the nearest, and most recent observation.
 
 
 ### Search by ip address
+
 > #### parameters:
 > `ip` - ip address for geolocation  
 >
@@ -63,6 +67,7 @@ Every api request will return the nearest, and most recent observation.
 
 
 ### Example response
+
 ```json
 {
     "location": {
@@ -113,6 +118,7 @@ This api returns a 12 days forecast in one day intervals for for any location on
 
 
 ### Request parameters
+
 > #### required parameters:
 > `key` - api key  
 >
@@ -123,6 +129,7 @@ This api returns a 12 days forecast in one day intervals for for any location on
 
 
 ### Search by city
+
 > #### parameters:
 > `city` - city name, postal code, point of interest or address. Can be not only in English.
 >
@@ -135,6 +142,7 @@ This api returns a 12 days forecast in one day intervals for for any location on
 
 
 ### Search by coordinates
+
 > #### parameters:
 > `lat, lon` - geographical coordinates of the location  
 >
@@ -143,6 +151,7 @@ This api returns a 12 days forecast in one day intervals for for any location on
 
 
 ### Search by ip address
+
 > #### parameters:
 > `ip` - ip address for geolocation  
 >
@@ -151,6 +160,7 @@ This api returns a 12 days forecast in one day intervals for for any location on
 
 
 ### Example response
+
 ```json
 {
     "location": {
@@ -214,7 +224,8 @@ This api returns a 12 days forecast in one day intervals for for any location on
 ```
 
 
-### Units format
+## Units format
+
 > #### description:
 > Metric, scientific and imperial units are available.
 >
@@ -227,7 +238,8 @@ This api returns a 12 days forecast in one day intervals for for any location on
 > `https://localhost:8000/api/v1.0/daily/?key=api_key&city=Tampa&units=S`
 
 
-### Language
+## Language
+
 > #### description:
 > Translation is applied for address and description fields.
 >
@@ -272,7 +284,8 @@ This api returns a 12 days forecast in one day intervals for for any location on
 > `https://localhost:8000/api/v1.0/daily/?key=api_key&city=Tampa&lang=pl`
 
 
-### Api error codes
+## Api error codes
+
 ```json
 {
     "error": "Invalid parameters.",
@@ -302,7 +315,38 @@ This api returns a 12 days forecast in one day intervals for for any location on
 ```
 
 
-### TODO
+## Services used:
+
+### Ip geolocation
+
+> [`https://ipinfo.io/`](https://ipinfo.io/)
+>
+> IP Geolocation is the identification of the geographic location
+> of an Internet-connected device, by using an ip address.
+
+### Forward geocoding
+
+> [`https://nominatim.org`](https://nominatim.org)
+>
+> Forward geocoding is the process of converting a place name like city name, postal code, 
+> point of interest or address into geographical coordinates - latitude and longitude values.
+
+
+### Reverse geocoding
+
+> [`https://nominatim.org`](https://nominatim.org)
+>
+> Reverse Geocoding is the process of converting a latitude and longitude point into a human readable address.
+
+
+### Weather forecast
+
+> [`https://www.weatherbit.io/`](https://www.weatherbit.io/)
+>
+> This weather api deliver accurate weather data and weather forecasts for any for any location on Earth.
+
+
+## TODO
 1. Create database  
     `createdb weather_api_db -O postgres`
 
