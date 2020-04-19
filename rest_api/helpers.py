@@ -4,9 +4,13 @@ from datetime import datetime
 from pytz import timezone
 from requests import HTTPError
 
+from django.core.validators import ValidationError
 from django.utils.crypto import get_random_string
+
+from rest_framework import status
 from rest_framework.response import Response
 
+from rest_api import messages
 from rest_api.models import ApiKeys
 
 
@@ -14,23 +18,28 @@ def reverse_geocode_data_helper(data):
     error = data.get('error')
     data = data.get('address')
 
+    if error == messages.UNABLE_TO_GEOCODE:
+        raise ValidationError(message=messages.INVALID_PARAMETERS, code=status.HTTP_400_BAD_REQUEST)
+
     if not data:
-        logging.error(error['message'])
-        raise HTTPError(error['message'])
+        logging.error(error.get('message'))
+        raise HTTPError(error.get('message'))
     return data
 
 
 def forward_geocode_data_helper(data):
-    error_message = 'Invalid parameters'
+    if isinstance(data, list) and not len(data):
+        raise ValidationError(message=messages.NOT_FOUND, code=status.HTTP_404_NOT_FOUND)
 
     if not data:
-        logging.error(error_message)
-        raise HTTPError(error_message)
+        logging.error(messages.INVALID_PARAMETERS)
+        raise HTTPError(messages.INVALID_PARAMETERS)
+
     try:
         return dict(address=data[0]['address'], lat=data[0]['lat'], lon=data[0]['lon'])
     except KeyError as error:
-        logging.error(f'KeyError: {error}')
-        raise Exception(f'KeyError: {error}')
+        logging.error(messages.KEY_ERROR + str(error))
+        raise Exception(messages.KEY_ERROR + str(error))
 
 
 def current_weather_data_helper(data):

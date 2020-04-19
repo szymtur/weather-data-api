@@ -6,6 +6,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from rest_api import messages
 from rest_api.permissions import OnlyAPIPermission, ApiKeyThrottle
 from rest_api.serializers import WeatherSerializer
 from rest_api.validators import lang_validator, units_validator, days_validator, ip_validator, coordinates_validator
@@ -61,13 +62,15 @@ class CurrentWeatherView(APIView):
                 location_data['address'] = reverse_geocode_data_helper(geocode_data)
 
             else:
-                error_message = 'Invalid parameters.'
-                logging.error(error_message)
-                return api_exception_helper(error_message, status.HTTP_400_BAD_REQUEST)
+                logging.error(messages.INVALID_PARAMETERS)
+                return api_exception_helper(messages.INVALID_PARAMETERS, status.HTTP_400_BAD_REQUEST)
 
+        except ValidationError as error:
+            logging.error(error.message)
+            return api_exception_helper(error.message, error.code)
         except (HTTPError, Exception) as error:
             logging.error(error)
-            return api_exception_helper('Internal server error.', status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return api_exception_helper(messages.INTERNAL_ERROR, status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         serializer = WeatherSerializer(data={'location': location_data, 'weather': weather_data})
 
@@ -75,7 +78,7 @@ class CurrentWeatherView(APIView):
             return Response(serializer.data)
 
         logging.error(serializer.errors)
-        return api_exception_helper('Internal server error.', status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return api_exception_helper(messages.INTERNAL_ERROR, status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class DailyWeatherView(APIView):
@@ -124,13 +127,15 @@ class DailyWeatherView(APIView):
                 location_data['address'] = reverse_geocode_data_helper(geocode_data)
 
             else:
-                error_message = 'Invalid parameters.'
-                logging.error(error_message)
-                return api_exception_helper(error_message, status.HTTP_400_BAD_REQUEST)
+                logging.error(messages.INVALID_PARAMETERS)
+                return api_exception_helper(messages.INVALID_PARAMETERS, status.HTTP_400_BAD_REQUEST)
 
+        except ValidationError as error:
+            logging.error(error.message)
+            return api_exception_helper(error.message, error.code)
         except (HTTPError, Exception) as error:
             logging.error(error)
-            return api_exception_helper('Internal server error.', status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return api_exception_helper(messages.INTERNAL_ERROR, status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         serializer = WeatherSerializer(data={'location': location_data, 'weather': weather_data})
 
@@ -138,4 +143,4 @@ class DailyWeatherView(APIView):
             return Response(serializer.data)
 
         logging.error(serializer.errors)
-        return api_exception_helper('Internal server error.', status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return api_exception_helper(messages.INTERNAL_ERROR, status.HTTP_500_INTERNAL_SERVER_ERROR)

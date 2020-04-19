@@ -16,7 +16,7 @@ def ip_info_handler(ip_address):
         raise HTTPError(error)
 
 
-# reverse geocode - getting city name from latitude and longitude using http://openstreetmap.org
+# reverse geocode - getting POI (point of interest) from latitude and longitude using http://openstreetmap.org
 def reverse_geocode_handler(lat, lon, lang):
     try:
         url = 'https://nominatim.openstreetmap.org/reverse'
@@ -27,7 +27,7 @@ def reverse_geocode_handler(lat, lon, lang):
         raise HTTPError(error)
 
 
-# forward geocode - getting latitude and longitude from city name using http://openstreetmap.org
+# forward geocode - getting latitude and longitude from POI (point of interest) using http://openstreetmap.org
 def forward_geocode_handler(city_name, lang):
     try:
         url = 'https://nominatim.openstreetmap.org'

@@ -302,6 +302,13 @@ This api returns a 12 days forecast in one day intervals for for any location on
 
 ```json
 {
+    "error": "Not Found.",
+    "code": "404"
+}
+```
+
+```json
+{
     "error": "API key rate limit exceeded.",
     "code": "429"
 }

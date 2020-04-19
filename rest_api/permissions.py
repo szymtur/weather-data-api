@@ -1,9 +1,11 @@
+import logging
+
 from datetime import date
 
 from django.core.exceptions import ObjectDoesNotExist
-from rest_framework import permissions
-from rest_framework import throttling
+from rest_framework import permissions, throttling
 
+from rest_api import messages
 from rest_api.models import ApiKeys, Throttling
 from rest_api.errors import InvalidApiKeyError, LimitExtendedError
 
@@ -16,6 +18,7 @@ class OnlyAPIPermission(permissions.BasePermission):
         if ApiKeys.objects.filter(api_key=request.GET.get('key')).exists():
             return True
 
+        logging.error(messages.API_KEY_NOT_VALID)
         raise InvalidApiKeyError()
 
 
@@ -44,4 +47,5 @@ class ApiKeyThrottle(throttling.BaseThrottle):
             api_key_throttling.save()
             return True
 
+        logging.error(messages.API_KEY_LIMIT_EXCEED)
         raise LimitExtendedError()

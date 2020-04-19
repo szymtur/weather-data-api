@@ -1,7 +1,10 @@
-from ipaddress import ip_address
+import logging
+
 from django.core.validators import ValidationError
+from ipaddress import ip_address
 from rest_framework import status
 
+from rest_api import messages
 from weather_api import settings
 
 
@@ -22,7 +25,8 @@ def days_validator(days):
         try:
             days = int(days)
         except ValueError:
-            raise ValidationError(message='Invalid parameters.', code=status.HTTP_400_BAD_REQUEST)
+            logging.error(messages.INVALID_PARAMETERS)
+            raise ValidationError(message=messages.INVALID_PARAMETERS, code=status.HTTP_400_BAD_REQUEST)
 
         if int(days) not in set(range(1, settings.DEFAULT_DAYS_LIMIT + 1)):
             return settings.DEFAULT_DAYS_LIMIT
@@ -35,7 +39,8 @@ def ip_validator(_ip_address):
         try:
             ip_address(_ip_address)
         except ValueError:
-            raise ValidationError(message='Invalid parameters.', code=status.HTTP_400_BAD_REQUEST)
+            logging.error(messages.INVALID_PARAMETERS)
+            raise ValidationError(message=messages.INVALID_PARAMETERS, code=status.HTTP_400_BAD_REQUEST)
         return _ip_address
     return _ip_address
 
@@ -45,6 +50,7 @@ def coordinates_validator(lat_lon):
         try:
             float(lat_lon)
         except (ValueError, TypeError):
-            raise ValidationError(message='Invalid parameters.', code=status.HTTP_400_BAD_REQUEST)
+            logging.error(messages.INVALID_PARAMETERS)
+            raise ValidationError(message=messages.INVALID_PARAMETERS, code=status.HTTP_400_BAD_REQUEST)
         return lat_lon
     return lat_lon
