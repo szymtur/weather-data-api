@@ -1,0 +1,236 @@
+/* main styles - start -------------------------------------------- -> */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #e3e3e3;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    width: 100vw;
+}
+
+section {
+    height: 92vh
+}
+
+section .content {
+    margin: auto;
+    text-align: center;
+    padding: 0.25em;
+    border: 1px solid #000000;
+    overflow: hidden;
+    background: #dcdcdc;
+}
+
+section .content h2 {
+    margin: 1em 0 0.5em 0;
+    padding-bottom: 1em;
+    overflow: hidden;
+    max-height: 2.5em;
+}
+
+section.info-section .content h3 {
+    margin-top: 0.5em;
+    margin-bottom: -0.5em;
+    font-weight: 400;
+    font-size: 3em;
+    letter-spacing: 0.3em;
+}
+
+.btn-container {
+    margin-bottom: 2em;
+}
+
+.btn-container .custom-btn {
+    font-size: 2em;
+    text-decoration: none;
+    color: #000000;
+    border: 1px solid;
+    display: inline-block;
+    width: 150px;
+    height: 60px;
+    line-height: 55px;
+    overflow: hidden;
+}
+
+.btn-container .custom-btn:hover {
+    color: #17a2b8;
+}
+
+.invalid-feedback {
+    display: none !important;
+}
+
+input {
+    border-radius: 0 !important;
+    background-image: none !important;
+}
+
+input:not([type='submit']) {
+    border: 1px solid #a5a5a5 !important;
+}
+
+input[type='submit'] {
+    border: 1px solid #15869a !important;
+}
+/* main styles - end ---------------------------------------------- -> */
+
+
+/* navbar styles - start ------------------------------------------ -> */
+header nav {
+    height: 12vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    overflow: hidden;
+    padding-bottom: 2vh;
+}
+
+header nav .user-info {
+    height: 25px;
+    margin-right: 1em;
+    overflow: hidden;
+}
+
+header nav .user-info span {
+    font-weight: 600;
+}
+
+header nav .navbar-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    border: 1px solid #000000;
+    margin-left: 1em;
+    min-width: 60px;
+    height: 40px;
+}
+
+header nav .navbar-btn:hover {
+    color: #17a2b8;
+    border: 1px solid #17a2b8;
+}
+
+header nav .navbar-btn .fa-2x {
+    font-size: 1.5em;
+}
+/* navbar styles - end -------------------------------------------- -> */
+
+
+/* home section styles - start ------------------------------------ -> */
+.home-section .intro-container h1 {
+    font-size: 3em;
+    font-weight: 400;
+    margin: 0.5em 0 1em 0;
+    max-height: 155px;
+    overflow: hidden;
+}
+/* home section styles - end -------------------------------------- -> */
+
+
+/* form section styles - start ------------------------------------ -> */
+.form-section {
+    height: 80vh;
+}
+
+.form-section .form-container h2 {
+    margin: -2em 0 0.75em 0.1em;
+}
+
+.form-section .form-container form label {
+    text-align: left;
+}
+
+.form-section .form-container form input[type=submit] {
+    text-align: right;
+}
+
+.form-section .form-container form .alert {
+    padding: 10px 12px 10px 13px;
+    border-radius: 0;
+    font-size: 0.95em;
+}
+
+.form-section .form-container form .alert ul {
+    list-style: none;
+}
+
+.form-section .form-container form .alert ul {
+    max-height: 64px;
+    overflow: hidden;
+}
+/* form section styles - end -------------------------------------- -> */
+
+
+/* dashboard section styles - start ------------------------------- -> */
+.dashboard {
+    height: 80vh;
+}
+
+.dashboard .info-container {
+    padding: 0 3.5em 1.5em 4em;
+}
+
+.dashboard .info-container .info-row {
+    display: flex;
+    flex-wrap: nowrap;
+    text-align: left;
+    padding-bottom: 0.25em;
+    overflow: hidden;
+}
+
+.dashboard .info-container h6 {
+    font-weight: 400;
+    font-size: 0.9em;
+    overflow: hidden;
+    height: 1.4em;
+    min-width: 140px;
+}
+
+.dashboard .info-container h5 {
+    font-weight: 500;
+    font-size: 0.9em;
+    overflow: hidden;
+    height: 1.2em;
+    width: 330px
+}
+
+.dashboard .info-container h6 button {
+    border: none;
+    outline: none;
+    color: #ff0000;
+    background: #dcdcdc;
+    font-size: 1.2em;
+}
+
+.dashboard .info-container h6 button:hover {
+    color: #000000;
+}
+
+.dashboard .info-container h6 span {
+    margin-left: 0.5em;
+}
+/* dashboard section styles - end --------------------------------- -> */
+
+
+/* footer section styles - start ---------------------------------- -> */
+footer {
+    position: sticky;
+    background: #e3e3e3;
+    height: 8vh;
+    text-align: right;
+    overflow: hidden;
+}
+
+footer h4 {
+    font-size: 1em;
+    font-weight: 400;
+    overflow: hidden;
+    height: 1.3em;
+    /*padding-right: 1em;*/
+}
+/* footer section styles - end ------------------------------------ -> */
