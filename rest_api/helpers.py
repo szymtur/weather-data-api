@@ -93,6 +93,7 @@ def daily_weather_data_helper(data):
 
 def api_key_generator():
     api_key = None
+
     is_not_uniq = True
     while is_not_uniq:
         api_key = get_random_string(length=32)

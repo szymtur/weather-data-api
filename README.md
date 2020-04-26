@@ -68,7 +68,7 @@ Every api request will return the nearest, and most recent observation.
 
 ### Example response
 
-```json
+```
 {
     "location": {
         "city_name": "Capellades",
@@ -161,7 +161,7 @@ This api returns a 12 days forecast in one day intervals for for any location on
 
 ### Example response
 
-```json
+```
 {
     "location": {
         "city_name": "Chicago",
@@ -247,7 +247,7 @@ This api returns a 12 days forecast in one day intervals for for any location on
 > `en` - English - DEFAULT
 > `ar` - Arabic
 > `az` - Azerbaijani
-> `be` - Belarusian
+> `be` - Belorussian
 > `bg` - Bulgarian
 > `bs` - Bosnian
 > `ca` - Catalan
@@ -258,7 +258,7 @@ This api returns a 12 days forecast in one day intervals for for any location on
 > `fr` - French
 > `el` - Greek
 > `et` - Estonian
-> `hr` - Croation
+> `hr` - Croatian
 > `hu` - Hungarian
 > `id` - Indonesian
 > `it` - Italian
@@ -287,38 +287,38 @@ This api returns a 12 days forecast in one day intervals for for any location on
 ## Api error codes
 
 ```json
-{
-    "error": "Invalid parameters.",
-    "code": "400"
-}
+  {
+      "error": "Invalid parameters.",
+      "code": "400"
+  }
 ```
 
 ```json
-{
-    "error": "API key not valid.",
-    "code": "403"
-}
+  {
+      "error": "API key not valid.",
+      "code": "403"
+  }
 ```
 
 ```json
-{
-    "error": "Not Found.",
-    "code": "404"
-}
+  {
+      "error": "Not Found.",
+      "code": "404"
+  }
 ```
 
 ```json
-{
-    "error": "API key rate limit exceeded.",
-    "code": "429"
-}
+  {
+      "error": "API key rate limit exceeded.",
+      "code": "429"
+  }
 ```
 
 ```json
-{
-    "error": "Internal server error.",
-    "code": "500"
-}
+  {
+      "error": "Internal server error.",
+      "code": "500"
+  }
 ```
 
 
@@ -353,15 +353,67 @@ This api returns a 12 days forecast in one day intervals for for any location on
 > This weather api deliver accurate weather data and weather forecasts for any for any location on Earth.
 
 
-## TODO
-1. Create database  
-    `createdb weather_api_db -O postgres`
+## Run application
 
-2. Make first migration  
-    `python manage.py migrate`
+1. Create an account in weatherbit.io service and get the api key  
 
-3. Populate a database  
-    `python manage.py populate_users_group`  
+   [`https://www.weatherbit.io/account/create`](https://www.weatherbit.io/account/create)
 
-4. Run django development server  
-    `python manage.py runserver`
+
+2. Create an account in ipinfo.io service and get the api key  
+
+   [`https://ipinfo.io/signup`](https://ipinfo.io/signup)
+
+
+3. Create database  
+
+  ```
+     $ createdb weather_api_db -O postgres
+  ```
+
+
+4. Update database configuration in `settings.py`
+
+  ```
+     DATABASES = {
+        'default': {
+           'HOST': '127.0.0.1',
+           'NAME': 'weather_api_db',
+           'USER': 'postgres',
+           'PASSWORD': 'password',
+           'ENGINE': 'django.db.backends.postgresql_psycopg2'
+        }
+     }
+  ```
+
+
+5. Make first migration
+
+  ```
+     $ python manage.py migrate
+  ```
+
+
+6. Populate users group
+
+  ```
+     $ python manage.py populate_users_group
+
+  ```
+
+
+7. Populate configuration
+
+  ```
+     $ python manage.py populate_configurations
+
+     Enter the weather_bit api key: YOUR_WEATHER_BIT_API_KEY
+     Enter the ip_info api key: YOUR_IP_INFO_API_KEY
+  ```
+
+
+8. Run django development server  
+
+  ```
+     $ python manage.py runserver
+  ```
