@@ -73,9 +73,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'account_api.processor.current_year',
-            ],
-        },
-    },
+            ]
+        }
+    }
 ]
 
 WSGI_APPLICATION = 'weather_api.wsgi.application'
@@ -85,15 +85,7 @@ WSGI_APPLICATION = 'weather_api.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'HOST': 'ec2-3-224-97-209.compute-1.amazonaws.com',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'weather_api_db',
-        'USER': 'mnyyfcfkhtmwpv',
-        'PASSWORD': '7e2b1ff932c1214f2e1a87626f757bb53eaf39ce275074f0dc069d26b5c11c2c',
-        'CONN_MAX_AGE': 500
-    },
-    # 'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 
