@@ -54,7 +54,7 @@ def current_weather_data_helper(data):
                         pressure=data[0]['pres'], hmidity=data[0]['rh'],
                         wind=data[0]['wind_spd'], air_ql=data[0]['aqi'],
                         sunrise=data[0]['sunrise'], sunset=data[0]['sunset'], clouds=data[0]['clouds'],
-                        last_ob_time=data[0]['last_ob_time'], uv_index=data[0]['uv'],
+                        ob_time=data[0]['ob_time'], uv_index=data[0]['uv'],
                         weather=data[0]['weather'])
 
     time = datetime.now(timezone(data[0]['timezone'])).strftime("%H:%M:%S")
