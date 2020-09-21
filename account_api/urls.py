@@ -4,7 +4,7 @@ from account_api.views import HomeView, LoginView, LogoutView, DashboardView, Si
 
 
 urlpatterns = [
-    path('home/', HomeView.as_view(), name='home'),
+    path('/', HomeView.as_view(), name='home'),
     path('account/login/', LoginView.as_view(), name='login'),
     path('account/logout/', LogoutView.as_view(), name='logout'),
     path('account/signup/', SignupView.as_view(), name='signup'),
