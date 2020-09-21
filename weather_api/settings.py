@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+# import django_heroku
+import dj_database_url
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -87,8 +90,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'weather_api_db',
         'USER': 'postgres',
-        'PASSWORD': 'coderslab'
-    }
+        'PASSWORD': 'coderslab',
+        'CONN_MAX_AGE': 500
+    },
+    # 'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 
@@ -133,6 +138,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "account_api/static")
 ]
+
+
+# Activate Django-Heroku.
+# django_heroku.settings(locals())
+
 
 
 # django-crispy-forms
