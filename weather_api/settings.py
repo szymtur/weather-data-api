@@ -28,7 +28,7 @@ SECRET_KEY = 's#qakh@q)wujp28qd!_2*dxtiipiwn=n56a%!^*_uv2db@fetl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'weather-api-data.herokuapp.com']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'weather-forecast-data.herokuapp.com']
 
 
 # Application definition
@@ -85,15 +85,15 @@ WSGI_APPLICATION = 'weather_api.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'HOST': '127.0.0.1',
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'weather_api_db',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'coderslab',
-    #     'CONN_MAX_AGE': 500
-    # },
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    'default': {
+        'HOST': 'ec2-3-224-97-209.compute-1.amazonaws.com',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'weather_api_db',
+        'USER': 'mnyyfcfkhtmwpv',
+        'PASSWORD': '7e2b1ff932c1214f2e1a87626f757bb53eaf39ce275074f0dc069d26b5c11c2c',
+        'CONN_MAX_AGE': 500
+    },
+    # 'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 
