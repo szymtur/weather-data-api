@@ -22,12 +22,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 's#qakh@q)wujp28qd!_2*dxtiipiwn=n56a%!^*_uv2db@fetl'
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'weather-forecast-data.herokuapp.com']
 
 
