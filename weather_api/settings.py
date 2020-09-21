@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-# import django_heroku
+import django_heroku
 import dj_database_url
 
 
@@ -85,15 +85,15 @@ WSGI_APPLICATION = 'weather_api.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'HOST': '127.0.0.1',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'weather_api_db',
-        'USER': 'postgres',
-        'PASSWORD': 'coderslab',
-        'CONN_MAX_AGE': 500
-    },
-    # 'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    # 'default': {
+    #     'HOST': '127.0.0.1',
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'weather_api_db',
+    #     'USER': 'postgres',
+    #     'PASSWORD': 'coderslab',
+    #     'CONN_MAX_AGE': 500
+    # },
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 
@@ -141,7 +141,7 @@ STATICFILES_DIRS = [
 
 
 # Activate Django-Heroku.
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
 
 
 
