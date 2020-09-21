@@ -97,7 +97,7 @@ Every api request will return the nearest, and most recent observation.
         "sunrise": "11:23",
         "sunset": "23:47",
         "clouds": 1,
-        "last_ob_time": "2020-04-18T17:13:00",
+        "ob_time": "2020-04-18T17:13:00",
         "uv_index": 11.4034,
         "weather": {
             "icon": "c01d",
