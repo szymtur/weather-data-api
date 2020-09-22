@@ -12,8 +12,8 @@ for any point on the globe along with local timezone.
 
 
 ### Service access:
-  * [sign up](http://localhost:8000/account/signup/)  for an account
-  * use the api key provided in account [dashboard](http://localhost:8000/account/dashboard/)
+  * [sign up](https://weather-forecast-data.herokuapp.com/account/signup/)  for an account
+  * use the api key provided in account [dashboard](https://weather-forecast-data.herokuapp.com/account/dashboard/)
 
 
 ## Current Weather Data
@@ -22,8 +22,7 @@ Every api request will return the nearest, and most recent observation.
 
 
 ### Base url
-> `https://localhost:8000/api/v1.0/current/`
-
+> `https://weather-forecast-data.herokuapp.com/api/v1.0/current/`
 
 ### Request parameters
 
@@ -41,11 +40,11 @@ Every api request will return the nearest, and most recent observation.
 > `city` - city name, postal code, point of interest or address. Can be not only in English.
 >
 > #### example requests:
-> `https://localhost:8000/api/v1.0/current/?key=API_KEY&city=Tampa`
+> `https://weather-forecast-data.herokuapp.com/api/v1.0/current/?key=API_KEY&city=Tampa`
 >
-> `https://localhost:8000/api/v1.0/current/?key=API_KEY&city=30-549`
+> `https://weather-forecast-data.herokuapp.com/api/v1.0/current/?key=API_KEY&city=30-549`
 >
-> `https://localhost:8000/api/v1.0/current/?key=API_KEY&city=sears-tower`
+> `https://weather-forecast-data.herokuapp.com/api/v1.0/current/?key=API_KEY&city=sears-tower`
 
 
 ### Search by coordinates
@@ -54,7 +53,7 @@ Every api request will return the nearest, and most recent observation.
 > `lat, lon` - geographical coordinates of the location  
 >
 > #### example request:
-> `https://localhost:8000/api/v1.0/current/?key=API_KEY&lat=50.25&lon=20.25`
+> `https://weather-forecast-data.herokuapp.com/api/v1.0/current/?key=API_KEY&lat=50.25&lon=20.25`
 
 
 ### Search by ip address
@@ -63,7 +62,7 @@ Every api request will return the nearest, and most recent observation.
 > `ip` - ip address for geolocation  
 >
 > #### example request:
-> `https://localhost:8000/api/v1.0/current/?key=API_KEY&ip=44.163.22.45`
+> `https://weather-forecast-data.herokuapp.com/api/v1.0/current/?key=API_KEY&ip=44.163.22.45`
 
 
 ### Example response
@@ -114,7 +113,7 @@ This api returns a 12 days forecast in one day intervals for for any location on
 
 
 ### Base url
-> `https://localhost:8000/api/v1.0/daily/`
+> `https://weather-forecast-data.herokuapp.com/api/v1.0/daily/`
 
 
 ### Request parameters
@@ -134,11 +133,11 @@ This api returns a 12 days forecast in one day intervals for for any location on
 > `city` - city name, postal code, point of interest or address. Can be not only in English.
 >
 > #### example requests:
-> `https://localhost:8000/api/v1.0/daily/?key=API_KEY&city=Sydney`
+> `https://weather-forecast-data.herokuapp.com/api/v1.0/daily/?key=API_KEY&city=Sydney`
 >
-> `https://localhost:8000/api/v1.0/daily/?key=API_KEY&city=00-950`
+> `https://weather-forecast-data.herokuapp.com/api/v1.0/daily/?key=API_KEY&city=00-950`
 >
-> `https://localhost:8000/api/v1.0/daily/?key=API_KEY&city=sears-tower`
+> `https://weather-forecast-data.herokuapp.com/api/v1.0/daily/?key=API_KEY&city=sears-tower`
 
 
 ### Search by coordinates
@@ -147,7 +146,7 @@ This api returns a 12 days forecast in one day intervals for for any location on
 > `lat, lon` - geographical coordinates of the location  
 >
 > #### example request:
-> `https://localhost:8000/api/v1.0/daily/?key=API_KEY&lat=40.25&lon=10.25`
+> `https://weather-forecast-data.herokuapp.com/api/v1.0/daily/?key=API_KEY&lat=40.25&lon=10.25`
 
 
 ### Search by ip address
@@ -156,7 +155,7 @@ This api returns a 12 days forecast in one day intervals for for any location on
 > `ip` - ip address for geolocation  
 >
 > #### example request:
-> `https://localhost:8000/api/v1.0/daily/?key=API_KEY&ip=44.163.22.45`
+> `https://weather-forecast-data.herokuapp.com/api/v1.0/daily/?key=API_KEY&ip=44.163.22.45`
 
 
 ### Example response
@@ -235,7 +234,7 @@ This api returns a 12 days forecast in one day intervals for for any location on
 > `I` - Imperial [Fahrenheit, mph, in]
 >
 > #### example request:
-> `https://localhost:8000/api/v1.0/daily/?key=API_KEY&city=Tampa&units=S`
+> `https://weather-forecast-data.herokuapp.com/api/v1.0/daily/?key=API_KEY&city=Tampa&units=S`
 
 
 ## Language
@@ -281,7 +280,7 @@ This api returns a 12 days forecast in one day intervals for for any location on
 > `zh-tw` - Chinese (Traditional)
 >
 > #### example request:
-> `https://localhost:8000/api/v1.0/daily/?key=API_KEY&city=Tampa&lang=pl`
+> `https://weather-forecast-data.herokuapp.com/api/v1.0/daily/?key=API_KEY&city=Tampa&lang=pl`
 
 
 ## Api error codes
@@ -353,7 +352,7 @@ This api returns a 12 days forecast in one day intervals for for any location on
 > This weather api deliver accurate weather data and weather forecasts for any for any location on Earth.
 
 
-## Run application
+## Running application locally
 
 1. Create an account in weatherbit.io service and get the api key  
 
