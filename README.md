@@ -371,36 +371,43 @@ This api returns a 12 days forecast in one day intervals for for any location on
    ```
 
 
-4. Update database configuration in `settings.py`
+4. Update debug property in `settings.py`
+
+   ```
+   DEBUG = True
+   ```
+
+
+5. Update database configuration in `settings.py`
 
    ```
    DATABASES = {
        'default': {
            'HOST': '127.0.0.1',
+           'ENGINE': 'django.db.backends.postgresql_psycopg2',
            'NAME': 'weather_api_db',
            'USER': 'postgres',
-           'PASSWORD': 'PASSWORD',
-           'ENGINE': 'django.db.backends.postgresql_psycopg2'
+           'PASSWORD': 'PASSWORD'
        }
    }
    ```
 
 
-5. Make first migration
+6. Make first migration
 
    ```
    $ python manage.py migrate
    ```
 
 
-6. Populate users group
+7. Populate users group
 
    ```
    $ python manage.py populate_users_group
    ```
 
 
-7. Populate configuration
+8. Populate configuration
 
    ```
    $ python manage.py populate_configurations
@@ -410,7 +417,7 @@ This api returns a 12 days forecast in one day intervals for for any location on
    ```
 
 
-8. Run django development server  
+9. Run django development server  
 
    ```
    $ python manage.py runserver
